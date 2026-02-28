@@ -1,0 +1,87 @@
+Tengo un sitio web PWA para ZEQUI SMASH BURGERS.
+Repositorio: https://github.com/alphaweb2008/ZEQUI-SMASH-BURGERS
+
+Tecnologías: React 18 + TypeScript + Vite + Tailwind CSS + 
+Framer Motion + Firebase Firestore + HashRouter + PWA
+
+ESTRUCTURA DE ARCHIVOS:
+src/
+├── App.tsx                    — Entrada principal, rutas HashRouter (/, /admin, /cocina)
+├── firebase.ts                — Config Firebase
+├── index.css                  — Estilos globales + animaciones lava/fuego
+├── components/
+│   ├── Navbar.tsx             — Header con efecto lava, logo circular editable, safe area móvil
+│   ├── Hero.tsx               — Sección principal con fondo lava animado + slogan
+│   ├── MenuSection.tsx        — Menú visual con fotos + botón agregar carrito
+│   ├── Cart.tsx               — Carrito flotante con drawer lateral
+│   ├── OrderModal.tsx         — Formulario pedido del cliente
+│   ├── About.tsx              — Sección "Nuestra Historia" editable
+│   ├── Contact.tsx            — Sección contacto editable
+│   ├── Marquee.tsx            — Ticker animado
+│   ├── CTA.tsx                — Sección call to action
+│   ├── InstallPWA.tsx         — Banner instalación PWA
+│   └── AdminPanel.tsx         — Panel admin completo
+├── store/
+│   ├── menuStore.ts           — Firebase Firestore menú
+│   ├── siteStore.ts           — Firebase Firestore config sitio
+│   └── orderStore.ts          — Firebase Firestore pedidos
+public/
+├── manifest.json              — Config PWA
+├── sw.js                      — Service Worker caché offline
+├── icon-192.svg               — Ícono app
+└── icon-512.svg               — Ícono app
+
+FIREBASE CONFIG:
+apiKey: AIzaSyBfp9lvNJ7uLfe6--dAPCGY_8uIjyIwHvw
+authDomain: zequi-smash-burgers.firebaseapp.com
+projectId: zequi-smash-burgers
+storageBucket: zequi-smash-burgers.firebasestorage.app
+messagingSenderId: 172239787065
+appId: 1:172239787065:web:1953999cb7b78139ae29e8
+
+FIRESTORE COLECCIONES:
+- menuItems          — productos (imagen base64 comprimida, precio en string)
+- orders             — pedidos de clientes
+- siteConfig/about   — contenido sección nosotros
+- siteConfig/contact — datos de contacto  
+- siteConfig/logo    — logo del negocio (base64)
+
+ACCESOS:
+- Sitio público:  /#/
+- Panel admin:    /#/admin  (contraseña: zequi2024)
+- Vista cocina:   /#/cocina (sin contraseña)
+
+DISEÑO:
+- Tema oscuro: fondo #050505
+- Paleta: amarillo #FFD60A, naranja #FF6B00, rojo oscuro #8B0000
+- Fuentes: Syne (títulos), Space Grotesk (cuerpo)
+- Fondo header y hero: efecto lava/fuego animado con CSS
+- Logo: circular, subido desde admin, dinámico en PWA
+
+REGLAS IMPORTANTES AL MODIFICAR:
+1. SIEMPRE usar HashRouter (nunca BrowserRouter) — evita 404
+2. Precios guardados como STRING en Firestore — nunca como number
+3. Imágenes comprimidas a máx 400KB antes de guardar en Firestore
+4. WhatsApp: wa.me/593 + número sin 0 inicial (Ecuador)
+5. Mensaje WhatsApp: texto plano SIN emojis en la URL
+6. Campo precio en admin: type="text" no type="number"
+7. NO editar package.json ni vite.config.ts directamente
+8. Reglas Firestore: allow read, write: if true
+9. Safe area móvil: env(safe-area-inset-top) en navbar
+10. Logo PWA dinámico: useDynamicManifest hook en App.tsx
+
+FUNCIONALIDADES COMPLETAS:
+✅ Menú visual con fotos editables desde admin
+✅ Carrito de compras flotante
+✅ Sistema de pedidos con número único (#ZSB-XXXXX)
+✅ Panel admin con 5 pestañas (Pedidos/Menú/Nosotros/Contacto/Logo)
+✅ Vista cocina en tiempo real
+✅ WhatsApp directo al cliente con wa.me/593
+✅ Secciones About y Contact editables en tiempo real
+✅ Logo circular editable desde admin
+✅ PWA instalable Android/iOS con ícono dinámico
+✅ Service Worker con caché offline
+✅ Firebase Firestore sincronización en tiempo real
+✅ Aviso de solo delivery en sección menú
+✅ Slogan: "Si algo rico quiere probar, Zequi Smash debes llamar 🍔📞"
+✅ Inicialización automática de Firestore al primer uso
